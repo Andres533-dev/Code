@@ -1,4 +1,5 @@
 package Proyecto.Code.src.View;
+
 import javax.swing.*;
 
 import java.awt.*;
@@ -105,12 +106,6 @@ public class Form implements GUI {
             data.add(field.getText());
         }
 		return data;
-	}
-	public ArrayList<JButton> getButtons() {
-		ArrayList<JButton> buttons = new ArrayList<>();
-		buttons.add(backButton);
-		buttons.add(submitButton);
-		return buttons;
 	}
 	/*
 	public void failureMessage(String message) {

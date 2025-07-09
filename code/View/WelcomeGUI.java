@@ -4,12 +4,12 @@ import javax.swing.*;
 import java.util.ArrayList;
 
 public class WelcomeGUI extends Create{
-    private Choose choose;
+    private Selection selection;
     public ArrayList<JButton> buttons;
     private String[] labelTexts;
     public WelcomeGUI() {
         String[] labelsText = {"Welcome", "Sign Up", "Log In"};
-        this.choose=new Choose(labelsText);
+        this.selection =new Selection(labelsText);
         super("Welcome");
         this.makeListener();
         // Texto para el label y botones
@@ -17,12 +17,12 @@ public class WelcomeGUI extends Create{
     }
     @Override
     public JPanel createPanel() {
-        return choose.setUpPanel();
+        return selection.setUpPanel();
     }
 
 
     public void makeListener(){
-        buttons=choose.getButtons();
+        buttons= selection.buttons;
         this.buttons.get(0).addActionListener(e->{
             try{
                 Create.showPanel("Sign Up");

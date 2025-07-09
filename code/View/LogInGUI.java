@@ -1,5 +1,5 @@
-
 package Proyecto.Code.src.View;
+
 
 import Proyecto.Code.src.Controler.LogInController;
 
@@ -16,13 +16,12 @@ public class LogInGUI extends Create{
         this.makeListeners();
     }
     @Override
-    public JPanel createPanel() {
+    protected JPanel createPanel() {
         return form.setUpPanel();
     }
-    public void makeListeners(){
-        ArrayList<JButton> buttons=form.getButtons();
 
-        buttons.get(0).addActionListener(e->{
+    public void makeListeners(){
+        form.backButton.addActionListener(e->{
             try{
                 Create.showPanel("Welcome");
             }
@@ -31,7 +30,7 @@ public class LogInGUI extends Create{
             }
         });
 
-        buttons.get(1).addActionListener(e->{
+        form.submitButton.addActionListener(e->{
             try{
                 ArrayList<String>answers =form.getFormData();
                 LogInController logIn =new LogInController(answers);
@@ -50,6 +49,8 @@ public class LogInGUI extends Create{
                 }
                 else if(success==4) {
                     JOptionPane.showMessageDialog(null,"The log in has been successful ");
+                    new Pickup();
+                    Create.showPanel("Pick Up");
                 }
             }
             catch (Exception ex){
@@ -57,6 +58,8 @@ public class LogInGUI extends Create{
             }
         });
     }
+
+
     /*
     public String[] getData() {
         return form.getFormData();

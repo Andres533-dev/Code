@@ -21,9 +21,7 @@ public class SignUpGUI extends Create{
     }
 
     public void makeListener(){
-        ArrayList<JButton>buttons=form.getButtons();
-
-        buttons.get(0).addActionListener(e->{
+        form.backButton.addActionListener(e->{
             try{
                 Create.showPanel("Welcome");
             }
@@ -32,7 +30,7 @@ public class SignUpGUI extends Create{
             }
         });
 
-        buttons.get(1).addActionListener(e->{
+        form.submitButton.addActionListener(e->{
             try{
                 ArrayList<String>answers =form.getFormData();
                 SignUpController sign =new SignUpController(answers);

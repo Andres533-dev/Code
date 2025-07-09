@@ -1,14 +1,15 @@
 package Proyecto.Code.src.View;
+
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 
-public class Choose implements GUI {
+public class Selection implements GUI {
     private JPanel buttonPanel;
     private JLabel label;
     private final JPanel pane;
     public ArrayList<JButton> buttons;
-    public Choose(String[] labelsText) {
+    public Selection(String[] labelsText) {
         pane = new JPanel();
         buttonPanel = new JPanel();
         this.setUpLabels(labelsText);
@@ -33,9 +34,6 @@ public class Choose implements GUI {
 
     }
 
-    public ArrayList<JButton> getButtons(){
-       return this.buttons;
-    }
 
     public JPanel setUpPanel() {
         pane.setLayout(new GridBagLayout());

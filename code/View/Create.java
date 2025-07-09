@@ -2,7 +2,6 @@ package Proyecto.Code.src.View;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.HashMap;
 
 public abstract class Create {
     protected static CardLayout cardLayout;

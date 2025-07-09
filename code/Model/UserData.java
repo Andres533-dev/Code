@@ -9,7 +9,7 @@ public class UserData {
         information = answers;
     }
     public void addUser(){
-        try (BufferedWriter escritor = new BufferedWriter(new FileWriter("Users.txt"))) {
+        try (BufferedWriter escritor = new BufferedWriter(new FileWriter("Users.txt",true))) {
             String[] typeInformation={"Name:","Last Name:","Mail:","Password:"};
             for(int i=0;i<=3;i++){
                 escritor.write(typeInformation[i]+information.get(i));
