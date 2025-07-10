@@ -1,63 +1,61 @@
 package Proyecto.Code.src.Controler;
 
-import Proyecto.Code.src.Model.User;
-
 import java.util.ArrayList;
 
 public class DirectionController {
-    public int success;
-    private String name,lastName ,password, mail;
+    protected int    streetNumber;
+    protected int    careerNumber;
+    protected int    houseNumber;
+    public int correctDirection ;
+    public boolean isNumber;
+    public DirectionController(ArrayList<String> answers, String[] labelTexts) {
+        this.correctDirection = 0;
+        isNumber = true;
+        this.setUpInformation(answers, labelTexts);
+        this.getStreet();
+        this.getCareer();
+        this.getHouseNumber();
 
-    public DirectionController(ArrayList<String> answers){
-        success=0;
-        this.verifyInfo(answers);
-        this.verifyName(answers.get(0));
-        this.verifyLastName(answers.get(1));
-        this.verifyPassword(answers.get(3));
-        this.register();
     }
-    public void verifyInfo(ArrayList<String> answers){
-        if (!answers.get(0).isEmpty() && !answers.get(1).isEmpty() && !answers.get(2).isEmpty() && !answers.get(3).isEmpty()) {
-            success=1;
-        }
-    }
-    public void register() {
-        User user=new User(this.name,this.lastName,this.mail,this.password);
-        if( success==5){
-            if(user.signUp()) {
-                success = 6;
+    public void setUpInformation(ArrayList<String> answers, String[] labelTexts){
+        try {
+            if (labelTexts[0].equals("Career")) {
+                this.careerNumber = Integer.parseInt(answers.get(0));
+                this.streetNumber = Integer.parseInt(answers.get(1));
             }
+            else {
+                this.streetNumber = Integer.parseInt(answers.get(0));
+                this.careerNumber = Integer.parseInt(answers.get(1));
+            }
+            this.houseNumber = Integer.parseInt(answers.get(2));
+            isNumber=true;
+            }
+            catch (NumberFormatException e) {
+            isNumber=false;
+            }
+    }
+    public void getStreet() {
+        if (isNumber && 1 <= streetNumber && streetNumber <= 246) {
+            correctDirection++;
         }
     }
+    public void getCareer(){
+        if (isNumber && 1 <= careerNumber && careerNumber <= 161) {
+            correctDirection++;
+        }
+    }
+    public void getHouseNumber() {
+        if (isNumber && 1 <= houseNumber && houseNumber <= 99) {
+            correctDirection++;
+        }
+    }
+    public String toString(String []labelText){
 
-    /* This method can be used to further verify whether the user
-     * has already signedUp to follow up and use the app
-     */
-
-    /*
-     * 	This method sets the name for the variable so that it can later be
-     *  validated and used to give the user a name.
-     */
-    public void verifyName(String name){
-        if(name.length() > 3 && success!=0) {
-            this.name = name;
-            success=2;
+        if(labelText[0].equals("Street")) {
+            return "Cl" + this.streetNumber + " #" + this.careerNumber + "-"+this.houseNumber ;
         }
-    }
-    public void verifyLastName(String lastName){
-        if(lastName.length() > 3 && success!=0) {
-            this.lastName = lastName;
-            success=3;
-        }
-    }
-    /*
-     * 	This method sets the password for a variable while restraining it
-     *  in case it´s too short to be secure
-     */
-    public void verifyPassword(String password) {
-        if (password.length() > 5 && success!=0){
-            this.password = password;
-            success=5;
+        else {
+            return "Cra" +" " +this.careerNumber + " #" + this.streetNumber + "-" +this.houseNumber ;
         }
     }
 }

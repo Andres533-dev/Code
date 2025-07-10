@@ -5,6 +5,7 @@ import Proyecto.Code.src.Model.Avenues;
 import javax.swing.*;
 
 public class DirectionTypeController {
+
     public DirectionTypeController(){
 
     }

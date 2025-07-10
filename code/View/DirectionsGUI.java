@@ -31,7 +31,7 @@ public class DirectionsGUI {
     }
     public void setUpLabels(String[] labelTexts) {
         comboBoxLabel = new JLabel("Select the Avenue:");
-        comboBoxLabel.setFont(new Font("Arial", Font.BOLD, 20));
+        comboBoxLabel.setFont(new Font("Arial", Font.BOLD, 25));
         labels = new ArrayList<>();
         for (String labelText : labelTexts) {
             JLabel label = new JLabel(labelText);
@@ -93,7 +93,6 @@ public class DirectionsGUI {
             pane.add(labels.get(i));
             pane.add(fields.get(i));
         }
-
         return pane;
     }
 
@@ -101,7 +100,6 @@ public class DirectionsGUI {
         ArrayList<String> data = new ArrayList<>();
         // Add the selected direction type first
         data.add((String) directionComboBox.getSelectedItem());
-
         // Add the field values
         for (JTextField field : fields) {
             data.add(field.getText());

@@ -6,45 +6,53 @@ import javax.swing.*;
 import java.util.ArrayList;
 
 public class Pickup extends Create {
-    private DirectionsGUI directionsGUI;
+    private Form form;
+    protected boolean succesful;
 
     public Pickup() {
         DirectionTypeController dc = new DirectionTypeController();
         String []labelTexts = dc.typeDirectionLabels();
-        String []avenuesData=dc.getAvenuesData();
         // Crear la vista DirectionsGUI con las avenidas y etiquetas
-        this.directionsGUI = new DirectionsGUI(labelTexts, avenuesData);
+        form = new Form(labelTexts);
         super("Pick Up");
-        this.makeListeners();
+        this.succesful = false;
+        this.makeListeners(labelTexts);
     }
 
     @Override
     public JPanel createPanel() {
-        return directionsGUI.setUpPanel();
+        return form.setUpPanel();
     }
 
-    public void makeListeners() {
-        directionsGUI.backButton.addActionListener(e -> {
+    public void makeListeners(String[] labelTexts) {
+        form.backButton.addActionListener(e -> {
             try {
-                Create.showPanel("Welcome");
+                Create.showPanel("Direction election");
             } catch (Exception ex) {
                 System.out.println("Error al ingresar dirección: " + ex.getMessage());
             }
         });
 
-        directionsGUI.submitButton.addActionListener(e -> {
+       form.submitButton.addActionListener(e -> {
             try {
-                ArrayList<String> answers = directionsGUI.getFormData();
-                DirectionController directionsController = new DirectionController(answers);
-                int result = directionsController.success;
-
+                ArrayList<String> answers = form.getFormData();
+                DirectionController directionsController = new DirectionController(answers,labelTexts);
+                int result = directionsController.correctDirection;
                 if (result == 0) {
-                    JOptionPane.showMessageDialog(null, "La dirección es inválida");
+                    JOptionPane.showMessageDialog(null, "The address is incorrect");
                 } else if (result == 1) {
-                    JOptionPane.showMessageDialog(null, "Dirección registrada correctamente");
+                    JOptionPane.showMessageDialog(null, "The career and the house number is incorrect");
+                }
+                else if (result == 2) {
+                    JOptionPane.showMessageDialog(null, "The house number is incorrect");
+                }
+                else if (result == 3) {
+                    JOptionPane.showMessageDialog(null, "The address has been added");
+                    this.succesful = true;
+                    //form.submitButton.setEnabled(false);
                 }
             } catch (Exception ex) {
-                System.out.println("Error al ingresar dirección: " + ex.getMessage());
+                System.out.println("Error adding the adress: " + ex.getMessage());
             }
         });
     }

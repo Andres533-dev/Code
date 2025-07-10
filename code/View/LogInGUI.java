@@ -49,8 +49,7 @@ public class LogInGUI extends Create{
                 }
                 else if(success==4) {
                     JOptionPane.showMessageDialog(null,"The log in has been successful ");
-                    new Pickup();
-                    Create.showPanel("Pick Up");
+                    Create.showPanel("Direction election");
                 }
             }
             catch (Exception ex){

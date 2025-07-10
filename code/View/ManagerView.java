@@ -7,11 +7,13 @@ public class ManagerView {
         new WelcomeGUI();
         new LogInGUI();
         new SignUpGUI();
+        new DirectionsElections();
+        new DriverSelection();
 
         // Configurar el JFrame
         JFrame frame = new JFrame("Mobility App");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(1000, 1000);
+        frame.setSize(2000, 2000);
         frame.add(Create.getPanel());
 
         // Mostrar el panel inicial

@@ -28,5 +28,5 @@ Av Primero de Mayo
 Av Quiroga
 Av San Bernardino
 Av Suba
-There is no Avenue
+There is no avenue
 
