@@ -2,6 +2,7 @@ package Proyecto.Code.src.View;
 import Proyecto.Code.src.Model.User;
 
 import javax.swing.*;
+import java.io.IOException;
 
 public class DirectionsElections extends Create {
     private Selection choose;
@@ -9,7 +10,7 @@ public class DirectionsElections extends Create {
     private Arrive arrive;
     private User user;
 
-    public DirectionsElections(User user) {
+    public DirectionsElections(User user) throws IOException {
         this.user = user;
         String[]labelText=new String[]{"Make a trip","Pickup","Arrive","Next"};
         choose=new Selection(labelText);
@@ -53,9 +54,10 @@ public class DirectionsElections extends Create {
         choose.buttons.get(2).addActionListener(e -> {
             try{
                 if(pickup != null && pickup.succesful && arrive != null && arrive.succesful){
+                    new DriverSelection(user);
                     Create.showPanel("Driver Selection");
                 }
-            } catch (RuntimeException ex) {
+            } catch (IOException ex) {
                 System.out.println("There is an error in Direction elections at the moment to driver Selection: " + ex.getMessage());
             }
         });

@@ -1,13 +1,14 @@
 package Proyecto.Code.src.View;
 
 import javax.swing.*;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class WelcomeGUI extends Create{
     private Selection selection;
     public ArrayList<JButton> buttons;
     private String[] labelTexts;
-    public WelcomeGUI() {
+    public WelcomeGUI() throws IOException {
         String[] labelsText = {"Welcome", "Sign Up", "Log In"};
         this.selection =new Selection(labelsText);
         super("Welcome");

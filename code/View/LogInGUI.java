@@ -4,12 +4,13 @@ import Proyecto.Code.src.Controler.LogInController;
 import Proyecto.Code.src.Model.User;
 
 import javax.swing.*;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class LogInGUI extends Create{
     private Form form;
 
-    public LogInGUI() {
+    public LogInGUI() throws IOException {
         String[] labelTexts = new String[]{"Mail", "Password"};
         this.form = new Form(labelTexts);
         super("Log In");

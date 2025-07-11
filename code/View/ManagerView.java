@@ -1,9 +1,10 @@
 package Proyecto.Code.src.View;
 
 import javax.swing.*;
+import java.io.IOException;
 
 public class ManagerView {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         new WelcomeGUI();
         new LogInGUI();
         new SignUpGUI();

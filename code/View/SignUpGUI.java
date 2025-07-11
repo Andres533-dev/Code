@@ -3,12 +3,13 @@ package Proyecto.Code.src.View;
 import Proyecto.Code.src.Controler.SignUpController;
 
 import javax.swing.*;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class SignUpGUI extends Create{
     private Form form;
 
-    public SignUpGUI() {
+    public SignUpGUI() throws IOException {
         String[] labelTexts = new String[]{"Name", "Last Name", "Mail", "Password"};
         this.form = new Form(labelTexts);
         super("Sign Up");

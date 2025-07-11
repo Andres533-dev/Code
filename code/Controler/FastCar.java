@@ -9,7 +9,6 @@ public class FastCar extends CarType {
 
     @Override
     public void applyTripSettings(Trip trip) {
-        trip.getPrice(priceMultiplier, speedFactor);
     }
 
     @Override

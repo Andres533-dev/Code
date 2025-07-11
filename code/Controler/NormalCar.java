@@ -8,7 +8,7 @@ public class NormalCar extends CarType {
     }
     @Override
     public void applyTripSettings(Trip trip) {
-        trip.getPrice(priceMultiplier, speedFactor);
+
     }
 
     @Override

@@ -33,11 +33,12 @@ public class TripData {
         if (!mailDir.exists()) {
             return;
         }
-
         File latestTripFile = findLatestTripFile(mailDir);
         if (latestTripFile != null) {
             try (FileWriter writer = new FileWriter(latestTripFile, true)) {
                 writer.write(type + ": " + direction + "\n");
+            } catch (IOException e) {
+                System.out.println("Error saving the direction: " + e.getMessage());
             }
         }
     }
@@ -56,7 +57,7 @@ public class TripData {
                         latestFile = file;
                     }
                 } catch (NumberFormatException e) {
-                    continue;
+                    System.out.println("Error getting the lates file: " + e.getMessage());
                 }
             }
         }

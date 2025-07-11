@@ -1,27 +1,35 @@
 package Proyecto.Code.src.View;
+import Proyecto.Code.src.Controler.Driver;
+import Proyecto.Code.src.Controler.DriverController;
+import Proyecto.Code.src.Model.DriverData;
+import Proyecto.Code.src.Model.User;
+
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 import java.awt.*;
+import java.io.IOException;
 
 public class DriverSelection extends Create {
-
-	public DriverSelection() {
+	private User user;
+	public DriverSelection(User user) throws IOException {
+		this.user=user;
 		super("Driver Selection");
 	}
 
 	@Override
-	protected JPanel createPanel() {
+	protected JPanel createPanel() throws IOException {
+		String[]carTypes=new String[]{"Xl","Normal","Fast"};
 		JPanel panel = new JPanel(new GridLayout(2, 3, 10, 10));
 
-		for (int i = 1; i <= 6; i++) {
-			JPanel subPanel = createSubPanel("Driver" + i + " toString method");
+		for (int i = 1; i <= 3; i++) {
+			Driver dc=new Driver(carTypes[i-1],user);
+			JPanel subPanel = createSubPanel(carTypes[i-1] + i + dc.toString());
 			addImageToPanel(subPanel);
 			addButtonToPanel(subPanel);
 			panel.add(subPanel);
 		}
 		return panel;
 	}
-
 	private JPanel createSubPanel(String labelText) {
 		JPanel subPanel = new JPanel();
 		subPanel.setLayout(new BoxLayout(subPanel, BoxLayout.Y_AXIS));

@@ -1,7 +1,5 @@
 package Proyecto.Code.src.Controler;
 
-import Proyecto.Code.src.Model.Avenues;
-
 import javax.swing.*;
 
 public class DirectionTypeController {
@@ -25,10 +23,6 @@ public class DirectionTypeController {
         } else {
             return new String[]{"Number of the Career", "Number of the Street", "Number of the house"};
         }
-    }
-    public String[] getAvenuesData() {
-        Avenues avenues = new Avenues();
-        return avenues.avenueData;
     }
 }
 

@@ -1,39 +1,38 @@
+
+package Proyecto.Code.src.Controler;
+
+import Proyecto.Code.src.Model.User;
+
+import javax.swing.*;
+import java.io.IOException;
+
 /*
-package Proyecto.Code.src;
-
-
 Subclass from User since they both require credentials to login (mail and password) &
   basic info for communication (name and number)
-
-public class Driver extends User {
+*/
+public class Driver {
 
 	//Own attributes
-		private String price;
+		private String name;
+        private Car car;
+		private String string;
+		private double price;
+		private double timeToUser;
 		
-		
-	public Driver(calls the class vehicle to get information about the vehicle){
-		
-		this.name = name;
-		this.password = password;
-		this.mail = mail;
-		this.number = number;
-		this.price = price;
+	public Driver(String typeCar, User user) throws IOException {
+        DriverController driver=new DriverController(typeCar,"Driver");
+		this.name = driver.informationDriver.getFirst();
+        this.car=Car.createCar(driver.informationDriver,"Owner");
+		TripController trip=new TripController(user,car);
+		this.price = trip.price; // Añadir precio
+		this.timeToUser = trip.timeToUser;
+		driver.saveCar(car);
+	}
+	public String toString() {
+		return "Car Type: " + car.getTypeDescription() +
+				"\n Capacity: " + car.getCapacity() +
+				"\n Price: $" + price +
+				"\n ETA: " + String.format("%.1f", timeToUser) + " mins";
+	}
 
-	}
-	
-	returns driver price (should be used to give the user/payment the amount to pay
-	public String getPrice() {
-		return this.price;
-	}
-	
-	
-	
-	public void getName(User user) {
-		if(user.hasRole("Passenger")) {
-			System.out.println("Name: " + this.name);
-		}
-		else 
-			System.out.println("You don't have permission to check this info");
-	}
 }
-*/

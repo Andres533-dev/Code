@@ -4,6 +4,7 @@ import Proyecto.Code.src.Controler.DirectionController;
 import Proyecto.Code.src.Controler.DirectionTypeController;
 import Proyecto.Code.src.Model.User;
 import javax.swing.*;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class Pickup extends Create {
@@ -11,7 +12,7 @@ public class Pickup extends Create {
     protected boolean succesful;
     private User user;
 
-    public Pickup(User user) {
+    public Pickup(User user) throws IOException {
         this.user = user;
         DirectionTypeController dc = new DirectionTypeController();
         String[] labelTexts = dc.typeDirectionLabels();

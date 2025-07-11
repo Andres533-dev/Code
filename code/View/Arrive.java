@@ -5,6 +5,7 @@ import Proyecto.Code.src.Controler.DirectionTypeController;
 import Proyecto.Code.src.Model.User;
 
 import javax.swing.*;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class Arrive extends Create {
@@ -12,7 +13,7 @@ public class Arrive extends Create {
     private User user;
     protected boolean succesful;
 
-    public Arrive(User user) {
+    public Arrive(User user) throws IOException {
         this.user = user;
         DirectionTypeController dc = new DirectionTypeController();
         String []labelTexts = dc.typeDirectionLabels();
