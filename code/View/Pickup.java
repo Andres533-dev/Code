@@ -2,17 +2,19 @@ package Proyecto.Code.src.View;
 
 import Proyecto.Code.src.Controler.DirectionController;
 import Proyecto.Code.src.Controler.DirectionTypeController;
+import Proyecto.Code.src.Model.User;
 import javax.swing.*;
 import java.util.ArrayList;
 
 public class Pickup extends Create {
     private Form form;
     protected boolean succesful;
+    private User user;
 
-    public Pickup() {
+    public Pickup(User user) {
+        this.user = user;
         DirectionTypeController dc = new DirectionTypeController();
-        String []labelTexts = dc.typeDirectionLabels();
-        // Crear la vista DirectionsGUI con las avenidas y etiquetas
+        String[] labelTexts = dc.typeDirectionLabels();
         form = new Form(labelTexts);
         super("Pick Up");
         this.succesful = false;
@@ -33,10 +35,10 @@ public class Pickup extends Create {
             }
         });
 
-       form.submitButton.addActionListener(e -> {
+        form.submitButton.addActionListener(e -> {
             try {
                 ArrayList<String> answers = form.getFormData();
-                DirectionController directionsController = new DirectionController(answers,labelTexts);
+                DirectionController directionsController = new DirectionController(answers, labelTexts, user, "Pickup");
                 int result = directionsController.correctDirection;
                 if (result == 0) {
                     JOptionPane.showMessageDialog(null, "The address is incorrect");
@@ -49,7 +51,7 @@ public class Pickup extends Create {
                 else if (result == 3) {
                     JOptionPane.showMessageDialog(null, "The address has been added");
                     this.succesful = true;
-                    //form.submitButton.setEnabled(false);
+                    form.submitButton.setEnabled(false);
                 }
             } catch (Exception ex) {
                 System.out.println("Error adding the adress: " + ex.getMessage());

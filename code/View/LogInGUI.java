@@ -1,7 +1,7 @@
 package Proyecto.Code.src.View;
 
-
 import Proyecto.Code.src.Controler.LogInController;
+import Proyecto.Code.src.Model.User;
 
 import javax.swing.*;
 import java.util.ArrayList;
@@ -15,6 +15,7 @@ public class LogInGUI extends Create{
         super("Log In");
         this.makeListeners();
     }
+
     @Override
     protected JPanel createPanel() {
         return form.setUpPanel();
@@ -32,8 +33,8 @@ public class LogInGUI extends Create{
 
         form.submitButton.addActionListener(e->{
             try{
-                ArrayList<String>answers =form.getFormData();
-                LogInController logIn =new LogInController(answers);
+                ArrayList<String>answers = form.getFormData();
+                LogInController logIn = new LogInController(answers);
                 int success=logIn.success;
                 if(success==0){
                     JOptionPane.showMessageDialog(null,"There is no information");
@@ -49,6 +50,9 @@ public class LogInGUI extends Create{
                 }
                 else if(success==4) {
                     JOptionPane.showMessageDialog(null,"The log in has been successful ");
+                    // Crear el usuario con la información del login y pasarlo a DirectionsElections
+                    User user = new User(answers.get(0), answers.get(1));
+                    new DirectionsElections(user);
                     Create.showPanel("Direction election");
                 }
             }
@@ -57,7 +61,7 @@ public class LogInGUI extends Create{
             }
         });
     }
-
+}
 
     /*
     public String[] getData() {
@@ -70,4 +74,3 @@ public class LogInGUI extends Create{
      */
 
 
-}

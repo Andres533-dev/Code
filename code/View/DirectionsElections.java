@@ -1,4 +1,5 @@
 package Proyecto.Code.src.View;
+import Proyecto.Code.src.Model.User;
 
 import javax.swing.*;
 
@@ -6,40 +7,30 @@ public class DirectionsElections extends Create {
     private Selection choose;
     private Pickup pickup;
     private Arrive arrive;
-    public DirectionsElections() {
+    private User user;
+
+    public DirectionsElections(User user) {
+        this.user = user;
         String[]labelText=new String[]{"Make a trip","Pickup","Arrive","Next"};
         choose=new Selection(labelText);
         super("Direction election");
         this.makeListener();
-
     }
+
     @Override
     protected JPanel createPanel() {
         return choose.setUpPanel();
     }
+
     public boolean isTripCompleted() {
         return pickup != null && pickup.succesful && arrive != null && arrive.succesful;
     }
-    /*
-    a
-    public void updateButtons(boolean succesful) {
-        if (succesful) {
-            choose.buttons.getFirst().setEnabled(false);
-            choose.buttons.get(1).setEnabled(true);
-        } else {
-            choose.buttons.getFirst().setEnabled(true);
-            choose.buttons.get(1).setEnabled(false);
-        }
-    }
 
-     */
     public void makeListener() {
-        // Deshabilita el botón "Arrive" al inicio
-        // Listener para el botón "Pick Up"
         choose.buttons.get(0).addActionListener(e -> {
             try {
                 if (pickup == null || !pickup.succesful) {
-                    pickup = new Pickup();
+                    pickup = new Pickup(user);
                     Create.showPanel("Pick Up");
                 }
             }
@@ -48,28 +39,25 @@ public class DirectionsElections extends Create {
             }
         });
 
-        // Listener para el botón "Arrive"
         choose.buttons.get(1).addActionListener(e -> {
             try {
                 if (arrive == null || !arrive.succesful) {
-                    arrive = new Arrive();
+                    arrive = new Arrive(user);
                     Create.showPanel("Arrive");
                 }
             } catch (Exception ex) {
                 System.out.println("There is an error in Direction elections at the moment to call Arrive: " + ex.getMessage());
             }
         });
+
         choose.buttons.get(2).addActionListener(e -> {
             try{
                 if(pickup != null && pickup.succesful && arrive != null && arrive.succesful){
-                   Create.showPanel("Driver Selection");
+                    Create.showPanel("Driver Selection");
                 }
             } catch (RuntimeException ex) {
                 System.out.println("There is an error in Direction elections at the moment to driver Selection: " + ex.getMessage());
             }
         });
     }
-
 }
-
-

@@ -96,13 +96,13 @@ public class User {
 		int exist = newUser.searchUser();
         return exist == 2;
 	}
-	protected String getName() {return this.name;}
+	public String getName() {return this.name;}
 	
-	protected String getMail() {return this.mail;}
+	public String getMail() {return this.mail;}
 
-	protected String getLastName() {return this.lastName;}
+	public String getLastName() {return this.lastName;}
 
-	protected String getPassword() {return this.password;}
+	public String getPassword() {return this.password;}
 
 	/*
 	 * Setter methods so that the user can change his data depending on the situation

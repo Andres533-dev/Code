@@ -46,7 +46,7 @@ public class DriverSelection extends Create {
 
 		JLabel imageLabel = new JLabel(scaledIcon);
 		imageLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
-		
+
 		panel.add(Box.createRigidArea(new Dimension(0, 5)));
 		panel.add(imageLabel);
 	}

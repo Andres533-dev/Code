@@ -1,4 +1,4 @@
-/*
+package Proyecto.Code.src.View;/*
  * This file contains the frontend to the card data request for 
  * online payment
  */

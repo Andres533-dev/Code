@@ -7,8 +7,7 @@ public class ManagerView {
         new WelcomeGUI();
         new LogInGUI();
         new SignUpGUI();
-        new DirectionsElections();
-        new DriverSelection();
+        // DirectionsElections se creará después del login exitoso
 
         // Configurar el JFrame
         JFrame frame = new JFrame("Mobility App");
@@ -21,5 +20,5 @@ public class ManagerView {
         frame.setVisible(true);
         frame.setLocationRelativeTo(null);
     }
-    }
+}
 
